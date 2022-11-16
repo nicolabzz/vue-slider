@@ -5,13 +5,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Arbutus&display=swap" rel="stylesheet">
+
     <!-- css -->
     <link rel="stylesheet" href="css/style.css">
 
     <title>Vue Slider</title>
+
 </head>
 <body>
-    
+
+
+
+	<div id="app">
+		<div class="slider">
+			<div @mouseover="stopTimer" @mouseleave="startTimer"  class="slide">
+				<img :src="picArray[currentSlide].items" :alt="picArray[currentSlide].title">
+				<div class="slide-text">
+					<h2 class="slide-title">{{ picArray[currentSlide].title }}</h2>
+					<p class="slide-text">{{ picArray[currentSlide].text }}</p>
+				</div>
+			</div>
+
+			<div class="thumbs">
+				<div v-for="(slide, index) in picArray" :class="index == currentSlide ? 'thumb active' : 'thumb'">
+					<img @click="currentSlide=index":src="picArray[index].items" :alt="picArray[currentSlide].title">
+				</div>
+				<button @click="prev" class="btn-control btn-previus">&and;</button>
+				<button @click="next" class="btn-control btn-next">&or;</button>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- commento prima  prova  -->
+    <!-- <div class="container-blur">
+		<div class="contents">
+			<div class="slider">
+				<div class="slider-viewer">
+					<div class="controls">
+						<button class="btn-left">&lt;</button>
+						<button class="btn-right">&gt;</button>
+					</div>
+				</div>
+
+				<div class="thumbs"></div>
+			</div>
+
+			<div class="btns">
+				<button class="btn-start-stop" data-functionality="stop">Stop</button>
+				<button class="btn-invert">Invert</button>
+			</div>
+		</div>
+	</div> -->
 
 
     
